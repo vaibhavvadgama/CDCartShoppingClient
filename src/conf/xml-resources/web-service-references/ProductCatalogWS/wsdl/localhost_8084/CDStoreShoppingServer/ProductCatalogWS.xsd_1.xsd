@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.6-1b01  svn-revision#13094. --><xs:schema xmlns:tns="http://productcatalog.ws.cdstoreserver.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://productcatalog.ws.cdstoreserver.com/">
+
+<xs:element name="getCategoryList" type="tns:getCategoryList"/>
+
+<xs:element name="getCategoryListResponse" type="tns:getCategoryListResponse"/>
+
+<xs:element name="getProductInfo" type="tns:getProductInfo"/>
+
+<xs:element name="getProductInfoResponse" type="tns:getProductInfoResponse"/>
+
+<xs:element name="getProductList" type="tns:getProductList"/>
+
+<xs:element name="getProductListResponse" type="tns:getProductListResponse"/>
+
+<xs:complexType name="getCategoryList">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getCategoryListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:categoryList" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="categoryList">
+<xs:sequence>
+<xs:element name="status" type="xs:string" minOccurs="0"/>
+<xs:element name="errormessage" type="xs:string" minOccurs="0"/>
+<xs:element name="category" type="tns:categoryBean" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="categoryBean">
+<xs:sequence>
+<xs:element name="categoryDesc" type="xs:string" minOccurs="0"/>
+<xs:element name="categoryId" type="xs:int"/>
+<xs:element name="categoryName" type="xs:string" minOccurs="0"/>
+<xs:element name="createdDate" type="xs:string" minOccurs="0"/>
+<xs:element name="isActive" type="xs:boolean"/>
+<xs:element name="modifiedDate" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getProductInfo">
+<xs:sequence>
+<xs:element name="productId" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getProductInfoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:cdList" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cdList">
+<xs:sequence>
+<xs:element name="status" type="xs:string" minOccurs="0"/>
+<xs:element name="errormessage" type="xs:string" minOccurs="0"/>
+<xs:element name="cd" type="tns:cdBean" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cdBean">
+<xs:sequence>
+<xs:element name="categoryId" type="xs:int"/>
+<xs:element name="cdId" type="xs:int"/>
+<xs:element name="cdImage" type="xs:string" minOccurs="0"/>
+<xs:element name="cdPrice" type="xs:double"/>
+<xs:element name="cdTitle" type="xs:string" minOccurs="0"/>
+<xs:element name="createdDate" type="xs:string" minOccurs="0"/>
+<xs:element name="isActive" type="xs:boolean"/>
+<xs:element name="modifiedDate" type="xs:string" minOccurs="0"/>
+<xs:element name="publishDate" type="xs:string" minOccurs="0"/>
+<xs:element name="taxPer" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getProductList">
+<xs:sequence>
+<xs:element name="categoryId" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getProductListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:cdList" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8084/CDStoreShoppingServer/ProductCatalogWS?wsdl" uri="src/conf/xml-resources/web-service-references/ProductCatalogWS/wsdl/localhost_8084/CDStoreShoppingServer/ProductCatalogWS.wsdl"/>
+    <system systemId="http://localhost:8084/CDStoreShoppingServer/ProductCatalogWS?xsd=1" uri="src/conf/xml-resources/web-service-references/ProductCatalogWS/wsdl/localhost_8084/CDStoreShoppingServer/ProductCatalogWS.xsd_1.xsd"/>
+    <system systemId="http://localhost:8084/CDStoreShoppingServer/AccountProcessingWS?wsdl" uri="src/conf/xml-resources/web-service-references/AccountProcessingWS/wsdl/localhost_8084/CDStoreShoppingServer/AccountProcessingWS.wsdl"/>
+    <system systemId="http://localhost:8084/CDStoreShoppingServer/AccountProcessingWS?xsd=1" uri="src/conf/xml-resources/web-service-references/AccountProcessingWS/wsdl/localhost_8084/CDStoreShoppingServer/AccountProcessingWS.xsd_1.xsd"/>
+    <system systemId="http://localhost:8084/CDStoreShoppingServer/OrderProcessWS?wsdl" uri="src/conf/xml-resources/web-service-references/OrderProcessWS/wsdl/localhost_8084/CDStoreShoppingServer/OrderProcessWS.wsdl"/>
+    <system systemId="http://localhost:8084/CDStoreShoppingServer/OrderProcessWS?xsd=1" uri="src/conf/xml-resources/web-service-references/OrderProcessWS/wsdl/localhost_8084/CDStoreShoppingServer/OrderProcessWS.xsd_1.xsd"/>
+</catalog>
