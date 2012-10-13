@@ -4,10 +4,13 @@
  */
 package com.cdstoreclient.controller;
 
+import com.cdstoreclient.exception.CDCartException;
 import com.cdstoreclient.servicemodel.UserModel;
 import com.cdstoreserver.ws.accountprocessing.UserBean;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +49,11 @@ public class UserServlet extends HttpServlet {
             newUserInfo.setFirstName("Vaibhav");
             
             UserModel model = new UserModel();
-            model.createUser(newUserInfo);
+            try {
+                model.createUser(newUserInfo);
+            } catch (CDCartException ex) {
+                Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             out.println("</body>");
             out.println("</html>");
