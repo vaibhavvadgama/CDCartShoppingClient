@@ -4,10 +4,13 @@
  */
 package com.cdstoreclient.servicemodel;
 
+import com.cdstoreclient.exception.CDCartException;
 import com.cdstoreserver.ws.accountprocessing.AccountProcessingWS;
 import com.cdstoreserver.ws.accountprocessing.AccountProcessingWS_Service;
+import com.cdstoreserver.ws.accountprocessing.AddressBean;
+import com.cdstoreserver.ws.accountprocessing.AddressList;
 import com.cdstoreserver.ws.accountprocessing.UserBean;
-import com.cdstoreserver.ws.accountprocessing.UserList;
+import java.util.ArrayList;
 
 /**
  *
@@ -33,12 +36,51 @@ public class UserModel {
         return webServicePort;
     }
     
-    public UserBean createUser(UserBean newUserInfo) {
-        UserBean createdUser = null;
+    public UserBean createUser(UserBean newUserInfo) throws CDCartException {
+        UserBean serviceResponseObject = webServicePort.addUser(newUserInfo);
         
-        createdUser = getServicePort().addUser(newUserInfo);
+        if(serviceResponseObject == null) {
+            throw new CDCartException(404, "Web service unavailable.");
+        } else {
+            if(!serviceResponseObject.getStatus().equals("success")) {
+                throw new CDCartException(404, serviceResponseObject.getErrormessage());
+            } else {
+                return serviceResponseObject;
+            }
+        }
+    }
+    
+    public UserBean getUserInfo(String username, String password) throws CDCartException {
+        UserBean serviceResponseObject = webServicePort.getUserInfo(username, password);
         
-        return createdUser;
+        if(serviceResponseObject == null) {
+            throw new CDCartException(404, "Web service unavailable.");
+        } else {
+            if(!serviceResponseObject.getStatus().equals("success")) {
+                throw new CDCartException(404, serviceResponseObject.getErrormessage());
+            } else {
+                return serviceResponseObject;
+            }
+        }
+    }
+    
+    public ArrayList<AddressBean> getUserAddresses(int userId) throws CDCartException {
+        AddressList serviceResponseObject = webServicePort.getUserAddresses(userId);
+        
+        ArrayList<AddressBean> addressList = new ArrayList<AddressBean>();
+        
+        if(serviceResponseObject == null) {
+            throw new CDCartException(404, "Web service unavailable.");
+        } else {
+            if(!serviceResponseObject.getStatus().equals("success")) {
+                throw new CDCartException(404, serviceResponseObject.getErrormessage());
+            } else {
+                for(AddressBean addressBean : serviceResponseObject.getAddress()) {
+                    addressList.add(addressBean);
+                }
+                return addressList;
+            }
+        }
     }
     
 }
