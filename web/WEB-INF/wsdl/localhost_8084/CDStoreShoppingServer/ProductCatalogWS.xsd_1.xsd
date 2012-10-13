@@ -12,6 +12,35 @@
 
 <xs:element name="getProductListResponse" type="tns:getProductListResponse"/>
 
+<xs:complexType name="getProductInfo">
+<xs:sequence>
+<xs:element name="productId" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getProductInfoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:cdBean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cdBean">
+<xs:sequence>
+<xs:element name="status" type="xs:string" minOccurs="0"/>
+<xs:element name="errormessage" type="xs:string" minOccurs="0"/>
+<xs:element name="categoryId" type="xs:int"/>
+<xs:element name="cdId" type="xs:int"/>
+<xs:element name="cdImage" type="xs:string" minOccurs="0"/>
+<xs:element name="cdPrice" type="xs:double"/>
+<xs:element name="cdTitle" type="xs:string" minOccurs="0"/>
+<xs:element name="createdDate" type="xs:string" minOccurs="0"/>
+<xs:element name="isActive" type="xs:boolean"/>
+<xs:element name="modifiedDate" type="xs:string" minOccurs="0"/>
+<xs:element name="publishDate" type="xs:string" minOccurs="0"/>
+<xs:element name="taxPer" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="getCategoryList">
 <xs:sequence/>
 </xs:complexType>
@@ -41,13 +70,13 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getProductInfo">
+<xs:complexType name="getProductList">
 <xs:sequence>
-<xs:element name="productId" type="xs:int" minOccurs="0"/>
+<xs:element name="categoryId" type="xs:int" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getProductInfoResponse">
+<xs:complexType name="getProductListResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:cdList" minOccurs="0"/>
 </xs:sequence>
@@ -58,33 +87,6 @@
 <xs:element name="status" type="xs:string" minOccurs="0"/>
 <xs:element name="errormessage" type="xs:string" minOccurs="0"/>
 <xs:element name="cd" type="tns:cdBean" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="cdBean">
-<xs:sequence>
-<xs:element name="categoryId" type="xs:int"/>
-<xs:element name="cdId" type="xs:int"/>
-<xs:element name="cdImage" type="xs:string" minOccurs="0"/>
-<xs:element name="cdPrice" type="xs:double"/>
-<xs:element name="cdTitle" type="xs:string" minOccurs="0"/>
-<xs:element name="createdDate" type="xs:string" minOccurs="0"/>
-<xs:element name="isActive" type="xs:boolean"/>
-<xs:element name="modifiedDate" type="xs:string" minOccurs="0"/>
-<xs:element name="publishDate" type="xs:string" minOccurs="0"/>
-<xs:element name="taxPer" type="xs:double"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getProductList">
-<xs:sequence>
-<xs:element name="categoryId" type="xs:int" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getProductListResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:cdList" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

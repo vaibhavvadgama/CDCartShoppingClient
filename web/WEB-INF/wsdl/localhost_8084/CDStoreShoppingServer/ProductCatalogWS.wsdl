@@ -4,6 +4,12 @@
 <xsd:import namespace="http://productcatalog.ws.cdstoreserver.com/" schemaLocation="http://localhost:8084/CDStoreShoppingServer/ProductCatalogWS?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="getCategoryList">
+<part name="parameters" element="tns:getCategoryList"/>
+</message>
+<message name="getCategoryListResponse">
+<part name="parameters" element="tns:getCategoryListResponse"/>
+</message>
 <message name="getProductList">
 <part name="parameters" element="tns:getProductList"/>
 </message>
@@ -16,13 +22,11 @@
 <message name="getProductInfoResponse">
 <part name="parameters" element="tns:getProductInfoResponse"/>
 </message>
-<message name="getCategoryList">
-<part name="parameters" element="tns:getCategoryList"/>
-</message>
-<message name="getCategoryListResponse">
-<part name="parameters" element="tns:getCategoryListResponse"/>
-</message>
 <portType name="ProductCatalogWS">
+<operation name="getCategoryList">
+<input wsam:Action="http://productcatalog.ws.cdstoreserver.com/ProductCatalogWS/getCategoryListRequest" message="tns:getCategoryList"/>
+<output wsam:Action="http://productcatalog.ws.cdstoreserver.com/ProductCatalogWS/getCategoryListResponse" message="tns:getCategoryListResponse"/>
+</operation>
 <operation name="getProductList">
 <input wsam:Action="http://productcatalog.ws.cdstoreserver.com/ProductCatalogWS/getProductListRequest" message="tns:getProductList"/>
 <output wsam:Action="http://productcatalog.ws.cdstoreserver.com/ProductCatalogWS/getProductListResponse" message="tns:getProductListResponse"/>
@@ -31,13 +35,18 @@
 <input wsam:Action="http://productcatalog.ws.cdstoreserver.com/ProductCatalogWS/getProductInfoRequest" message="tns:getProductInfo"/>
 <output wsam:Action="http://productcatalog.ws.cdstoreserver.com/ProductCatalogWS/getProductInfoResponse" message="tns:getProductInfoResponse"/>
 </operation>
-<operation name="getCategoryList">
-<input wsam:Action="http://productcatalog.ws.cdstoreserver.com/ProductCatalogWS/getCategoryListRequest" message="tns:getCategoryList"/>
-<output wsam:Action="http://productcatalog.ws.cdstoreserver.com/ProductCatalogWS/getCategoryListResponse" message="tns:getCategoryListResponse"/>
-</operation>
 </portType>
 <binding name="ProductCatalogWSPortBinding" type="tns:ProductCatalogWS">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="getCategoryList">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="getProductList">
 <soap:operation soapAction=""/>
 <input>
@@ -48,15 +57,6 @@
 </output>
 </operation>
 <operation name="getProductInfo">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="getCategoryList">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
