@@ -5,11 +5,13 @@
 package com.cdstoreclient.servicemodel;
 
 import com.cdstoreclient.exception.CDCartException;
+import com.cdstoreserver.ws.productcatalog.CategoryBean;
 import com.cdstoreserver.ws.productcatalog.CategoryList;
 import com.cdstoreserver.ws.productcatalog.CdBean;
 import com.cdstoreserver.ws.productcatalog.CdList;
 import com.cdstoreserver.ws.productcatalog.ProductCatalogWS;
 import com.cdstoreserver.ws.productcatalog.ProductCatalogWS_Service;
+import java.util.ArrayList;
 
 /**
  *
@@ -35,8 +37,9 @@ public class ProductModel {
         return webServicePort;
     }
     
-    public CategoryList getCategoryList() throws CDCartException {
+    public ArrayList<CategoryBean> getCategoryList() throws CDCartException {
         CategoryList serviceResponseObject = webServicePort.getCategoryList();
+        ArrayList<CategoryBean> categoryList = new ArrayList<CategoryBean>();
         
         if(serviceResponseObject == null) {
             throw new CDCartException(404, "Web service unavailable.");
@@ -44,7 +47,10 @@ public class ProductModel {
             if(!serviceResponseObject.getStatus().equals("success")) {
                 throw new CDCartException(404, serviceResponseObject.getErrormessage());
             } else {
-                return serviceResponseObject;
+                for(CategoryBean categoryBean : serviceResponseObject.getCategory()) {
+                    categoryList.add(categoryBean);
+                }
+                return categoryList;
             }
         }
     }
@@ -63,8 +69,9 @@ public class ProductModel {
         }
     }
     
-    public CdList getProductList(int categoryId) throws CDCartException {
+    public ArrayList<CdBean> getProductList(int categoryId) throws CDCartException {
         CdList serviceResponseObject = webServicePort.getProductList(categoryId);
+        ArrayList<CdBean> cdList = new ArrayList<CdBean>();
         
         if(serviceResponseObject == null) {
             throw new CDCartException(404, "Web service unavailable.");
@@ -72,7 +79,10 @@ public class ProductModel {
             if(!serviceResponseObject.getStatus().equals("success")) {
                 throw new CDCartException(404, serviceResponseObject.getErrormessage());
             } else {
-                return serviceResponseObject;
+                for(CdBean cdBean : serviceResponseObject.getCd()) {
+                    cdList.add(cdBean);
+                }
+                return cdList;
             }
         }
     }

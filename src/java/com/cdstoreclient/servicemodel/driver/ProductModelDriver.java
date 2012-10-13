@@ -10,6 +10,7 @@ import com.cdstoreserver.ws.productcatalog.CategoryBean;
 import com.cdstoreserver.ws.productcatalog.CategoryList;
 import com.cdstoreserver.ws.productcatalog.CdBean;
 import com.cdstoreserver.ws.productcatalog.CdList;
+import java.util.ArrayList;
 
 /**
  *
@@ -27,7 +28,7 @@ public class ProductModelDriver {
 
     public void testgetCategoryList() {
         ProductModel model = new ProductModel();
-        CategoryList list = null;
+        ArrayList<CategoryBean> list = null;
         try {
             list = model.getCategoryList();
         } catch (Exception ex) {
@@ -36,18 +37,15 @@ public class ProductModelDriver {
         System.out.println("Check 1");
         if (list != null) {
             System.out.println("Check 2");
-            if (list.getCategory() != null) {
-                System.out.println("Size : " + list.getCategory().size());
-                for (CategoryBean category : list.getCategory()) {
-                    SystemLogger.out(category.getCategoryName());
-                }
+            for (CategoryBean category : list) {
+                SystemLogger.out(category.getCategoryName());
             }
         }
     }
 
     public void testGetProductList(int categoryNo) {
         ProductModel model = new ProductModel();
-        CdList list = null;
+        ArrayList<CdBean> list = null;
         try {
             list = model.getProductList(categoryNo);
         } catch (Exception ex) {
@@ -55,13 +53,11 @@ public class ProductModelDriver {
         }
         System.out.println("Check 1");
         if (list != null) {
-            System.out.println("Check 2");
-            if (list.getCd() != null) {
-                System.out.println("Size : " + list.getCd().size());
-                for (CdBean cdBean : list.getCd()) {
-                    SystemLogger.out("CDId : " + cdBean.getCdId() + ", Title : " + cdBean.getCdTitle());
-                }
+            System.out.println("Size : " + list.size());
+            for (CdBean cdBean : list) {
+                SystemLogger.out("CDId : " + cdBean.getCdId() + ", Title : " + cdBean.getCdTitle());
             }
+
         }
     }
 
