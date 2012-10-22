@@ -15,8 +15,22 @@ import java.util.ArrayList;
 /**
  *
  * @author Vaibhav
+ * Desc:functions to call order related web service using rpc approach
  */
 public class CartModel {
+    
+    static {
+	    //for localhost testing only
+	    javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(
+	    new javax.net.ssl.HostnameVerifier(){
+ 
+                @Override
+	        public boolean verify(String hostname,
+	                javax.net.ssl.SSLSession sslSession) {
+	            return true;
+	        }
+	    });
+	}
 
     OrderProcessWS_Service serviceReference = null;
     OrderProcessWS webServicePort = null;
@@ -27,7 +41,7 @@ public class CartModel {
             webServicePort = serviceReference.getOrderProcessWSPort();
         }
     }
-
+   //Getting service port
     public OrderProcessWS getServicePort() {
         if (serviceReference == null) {
             serviceReference = new OrderProcessWS_Service();
@@ -35,7 +49,8 @@ public class CartModel {
         }
         return webServicePort;
     }
-
+   
+    //Calling createorder webservice by passing orderitems and shipping info
     public ProcessedOrdersBean createOrder(ArrayList<CdBean> orderItems, AddressBean shippingInfo) throws CDCartException {
         ProcessedOrdersBean serviceResponseObject = webServicePort.createOrder(orderItems, shippingInfo);
 
@@ -49,7 +64,9 @@ public class CartModel {
             }
         }
     }
-
+    
+    
+    //Calling confirmorder webservice by passing orderinfo and payment info
     public ProcessedOrdersBean confirmOrder(ProcessedOrdersBean purchasedOrder, Boolean paymentInfo) throws CDCartException {
         ProcessedOrdersBean serviceResponseObject = webServicePort.confirmOrder(purchasedOrder, paymentInfo);
 
@@ -63,4 +80,17 @@ public class CartModel {
             }
         }
     }
+    
+     public static double getTotalPrice(ArrayList<CdBean> Product){
+        double price = 0;
+        for (int i=0; i<Product.size(); i++) {
+                CdBean product = Product.get(i);
+                double productPrice = product.getCdPrice();
+                double taxPer = product.getTaxPer();
+                price = price + productPrice  + ((productPrice*taxPer)/100);            
+        }
+            return price; 
+    }
+
+    
 }

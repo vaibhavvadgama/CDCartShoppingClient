@@ -12,4 +12,10 @@
     <system systemId="http://localhost:8080/CDStoreShoppingServer/OrderProcessWS?xsd=1" uri="wsdl/localhost_8080/CDStoreShoppingServer/OrderProcessWS.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/CDStoreShoppingServer/AccountProcessingWS?wsdl" uri="wsdl/localhost_8080/CDStoreShoppingServer/AccountProcessingWS.wsdl"/>
     <system systemId="http://localhost:8080/CDStoreShoppingServer/AccountProcessingWS?xsd=1" uri="wsdl/localhost_8080/CDStoreShoppingServer/AccountProcessingWS.xsd_1.xsd"/>
+    <system systemId="https://localhost:8443/CDStoreShoppingServer/ProductCatalogWS?wsdl" uri="wsdl/localhost_8443/CDStoreShoppingServer/ProductCatalogWS.wsdl"/>
+    <system systemId="https://localhost:8443/CDStoreShoppingServer/ProductCatalogWS?xsd=1" uri="wsdl/localhost_8443/CDStoreShoppingServer/ProductCatalogWS.xsd_1.xsd"/>
+    <system systemId="https://localhost:8443/CDStoreShoppingServer/OrderProcessWS?wsdl" uri="wsdl/localhost_8443/CDStoreShoppingServer/OrderProcessWS.wsdl"/>
+    <system systemId="https://localhost:8443/CDStoreShoppingServer/OrderProcessWS?xsd=1" uri="wsdl/localhost_8443/CDStoreShoppingServer/OrderProcessWS.xsd_1.xsd"/>
+    <system systemId="https://localhost:8443/CDStoreShoppingServer/AccountProcessingWS?wsdl" uri="wsdl/localhost_8443/CDStoreShoppingServer/AccountProcessingWS.wsdl"/>
+    <system systemId="https://localhost:8443/CDStoreShoppingServer/AccountProcessingWS?xsd=1" uri="wsdl/localhost_8443/CDStoreShoppingServer/AccountProcessingWS.xsd_1.xsd"/>
 </catalog>

@@ -60,12 +60,8 @@
 <xs:sequence>
 <xs:element name="status" type="xs:string" minOccurs="0"/>
 <xs:element name="errormessage" type="xs:string" minOccurs="0"/>
-<xs:element name="cardNumber" type="xs:string" minOccurs="0"/>
-<xs:element name="cardType" type="xs:string" minOccurs="0"/>
 <xs:element name="createdDate" type="xs:string" minOccurs="0"/>
-<xs:element name="cvv" type="xs:int"/>
 <xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="expDate" type="xs:string" minOccurs="0"/>
 <xs:element name="firstName" type="xs:string" minOccurs="0"/>
 <xs:element name="isActive" type="xs:boolean"/>
 <xs:element name="lastName" type="xs:string" minOccurs="0"/>

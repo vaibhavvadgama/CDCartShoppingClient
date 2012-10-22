@@ -16,9 +16,23 @@ import java.util.ArrayList;
 /**
  *
  * @author Vaibhav
+ * Desc:functions to call products(cdmains table) related web service using rpc approach
  */
 public class ProductModel {
     
+    
+    static {
+	    //for localhost testing only
+	    javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(
+	    new javax.net.ssl.HostnameVerifier(){
+ 
+                @Override
+	        public boolean verify(String hostname,
+	                javax.net.ssl.SSLSession sslSession) {
+	            return true;
+	        }
+	    });
+	}
     ProductCatalogWS_Service serviceReference = null;
     ProductCatalogWS webServicePort = null;
 
@@ -29,6 +43,7 @@ public class ProductModel {
         }
     }
     
+    //Getting service port
     public ProductCatalogWS getServicePort() {
         if(serviceReference == null) {
             serviceReference = new ProductCatalogWS_Service();
@@ -37,6 +52,7 @@ public class ProductModel {
         return webServicePort;
     }
     
+    //Calling getcategory list webservice
     public ArrayList<CategoryBean> getCategoryList() throws CDCartException {
         CategoryList serviceResponseObject = webServicePort.getCategoryList();
         ArrayList<CategoryBean> categoryList = new ArrayList<CategoryBean>();
@@ -55,6 +71,7 @@ public class ProductModel {
         }
     }
     
+    //Calling getproduct webservice by passing product id
     public CdBean getProductInfo(int productId) throws CDCartException {
         CdBean serviceResponseObject = webServicePort.getProductInfo(productId);
         
@@ -69,6 +86,7 @@ public class ProductModel {
         }
     }
     
+    //Calling getproductlist web service by providing category id
     public ArrayList<CdBean> getProductList(int categoryId) throws CDCartException {
         CdList serviceResponseObject = webServicePort.getProductList(categoryId);
         ArrayList<CdBean> cdList = new ArrayList<CdBean>();

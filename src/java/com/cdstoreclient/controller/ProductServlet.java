@@ -22,8 +22,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author Utkarsh
  */
 public class ProductServlet extends HttpServlet {
-
     
+    ProductModel objPm = new ProductModel();
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP
@@ -37,66 +38,76 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String forward="";  
-  
+        String forward = "";
+        //On the  basis of action variable passed with get request it loads the relavent page and it also acts as front controller too
         String action = request.getParameter("action");
-        
+
         PrintWriter out = response.getWriter();
+
         
-        ProductModel objPm = new ProductModel();
-        
-        if (action.equalsIgnoreCase("showcategories")){  
-  
+
+        SessionController objSession = new SessionController(request);
+
+        request.setAttribute("user", objSession.getLoggedUser());
+        //Show all available cd categories on website
+        if (action.equalsIgnoreCase("showcategories")) {
+
             forward = ServletMappings.HomePage;
             ArrayList<CategoryBean> categories = null;
-            
+
             try {
-                categories = objPm.getCategoryList(); 
-            } catch (Exception e){
-                out.print("Error fetching categoeries"+ e);
+                categories = objPm.getCategoryList();
+            } catch (Exception e) {
+                out.print("Error fetching categoeries" + e);
             }
-  
+
             request.setAttribute("categories", categories);
-  
-        } else if (action.equalsIgnoreCase("showproducts")){  
-  
-           int categoryId = Integer.parseInt(request.getParameter("catid"));
-           ArrayList<CdBean> products = null;
+
+        }
+        //Show all the cds(products) associated with passed or provided category id on website
+        else if (action.equalsIgnoreCase("showproducts")) {
+
+            int categoryId = Integer.parseInt(request.getParameter("catid"));
+            ArrayList<CdBean> products = null;
             try {
-            products = objPm.getProductList(categoryId);
-            } catch (Exception e){
-                out.print("Error fetching products"+ e);
+                products = objPm.getProductList(categoryId);
+            } catch (Exception e) {
+                out.print("Error fetching products" + e);
             }
-            forward = ServletMappings.LIST_PRODUCTS;  
-  
-            request.setAttribute("products", products);     
-  
-        } else if (action.equalsIgnoreCase("showproductinfo")){  
-  
-            forward = ServletMappings.PRODUCTINFO;  
-  
-            int productId = Integer.parseInt(request.getParameter("prodId"));  
-            
+            forward = ServletMappings.LISTPRODUCTS;
+
+            request.setAttribute("products", products);
+
+        } 
+        //Show product info of passed or provided product id
+        else if (action.equalsIgnoreCase("showproductinfo")) {
+
+            forward = ServletMappings.PRODUCTINFO;
+
+            int productId = Integer.parseInt(request.getParameter("prodId"));
+
             CdBean proddata = null;
-            
+
             try {
-                proddata = objPm.getProductInfo(productId);  
-            } catch (Exception e){
-                out.print("Error fetching products"+ e);
+                proddata = objPm.getProductInfo(productId);
+            } catch (Exception e) {
+                out.print("Error fetching products" + e);
             }
-            request.setAttribute("proddata", proddata); 
-  
-        }  else {  
-  
-            forward = ServletMappings.ERROR;  
-  
-        }  
-  
-  
-  
-        RequestDispatcher view = request.getRequestDispatcher(forward);  
-  
-        view.forward(request, response);  
+            request.setAttribute("proddata", proddata);
+
+        } 
+        //show error page in case of unknown request
+        else {
+
+            forward = ServletMappings.ERROR;
+
+        }
+
+
+
+        RequestDispatcher view = request.getRequestDispatcher(forward);
+
+        view.forward(request, response);
     }
 
     /**
@@ -111,8 +122,15 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
     }
 
-
+    public CdBean findProductById(int id, ArrayList<CdBean> Product) {
+        for (int i = 0; i < Product.size(); i++) {
+            CdBean product = Product.get(i);
+            if (product.getCdId() == id) {
+                return product;
+            }
+        }
+        return null; // no Customer found with this ID; maybe throw an exception
+    }
 }

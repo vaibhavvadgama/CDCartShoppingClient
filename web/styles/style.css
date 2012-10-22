@@ -822,3 +822,13 @@ tr.odd td {}
 .sn span{height:23px; width:23px; display:inline; display:inline-block}
 .icon-img{background-position:0 0;}
 .icon-img:hover{background-position:0 -23px !important;}
+
+.error{
+  border: 1px solid red;
+  background-color: #ffffee;
+  color: #660000;
+  padding: 2px;
+  font-weight:normal;
+  font-size:12px;
+  display: inline-block;
+}

@@ -4,14 +4,12 @@
     Author     : Utkarsh
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@include file="header.jsp" %>
+  <!-- MAIN CONTENT -->
+        <div id="outermain">
+        	<div class="container">
+                <span class="error">There is some error loading page. ${error}</span>
+                </div>
+        </div>
+        <!-- END MAIN CONTENT -->
+ <%@include file="footer.jsp" %>  

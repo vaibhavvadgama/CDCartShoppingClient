@@ -1,51 +1,27 @@
 <%-- 
-    Document   : userLogin
-    Created on : Oct 14, 2012, 12:12:01 AM
+    Document   : confirmorder
+    Created on : Oct 18, 2012, 5:51:50 PM
     Author     : Utkarsh
 --%>
 
 <%@include file="header.jsp" %>
-<script language="javascript" src="./js/user.js"></script>
-   <!-- BEFORE CONTENT -->
-        <div id="outerbeforecontent">
-        	<div class="container">
-                <section id="beforecontent" class="twelve columns">
-                    <h1 class="pagetitle">My Account</h1>
-                    <div class="clear"></div>
-                </section>
-            </div>
-        </div>
-        <!-- END BEFORE CONTENT -->
-        
-        <!-- MAIN CONTENT -->
-        <div id="outermain">
+<div id="outermain">
         	<div class="container">
 			<section id="maincontent" class="twelve columns">
 				<section id="content" class="positionleft nine columns alpha"> 
                 	<div class="padcontent">
-                    	
+                        <c:if test="${payment=='true'}">
                         <div class="alert">
-                            <h2 class="title">New User?</h2>
-                            <h5><a href="UserServlet?action=userregister">Click here to create account</a></h5>
-                            
+                           Thanks for your order.It will be delivered in 3-5 business days.
+                           <a href="ProductServlet?action=showcategories">Back to home page.</a>                            
                         </div>
-                        <div class="one_half lastcols">
-                            <h2 class="title">Already Registered?</h2>
-                            <form method="post" action="UserServlet" id="loginform" name="loginform">
-                            <input type="hidden" name="action" value="login" />
-                            <fieldset>
-                                <c:if test="${error!=''}"><span class="error">${error}</span><br /></c:if>
-                            <label>E-mail Address</label><br />
-                            <input type="text" name="email" id="email"/><br />
-                            <label>Password</label><br />
-                            <input type="password" class="text-input" name="pass" id="pass"/><br />
-                            <input type="submit" class="button" value="log in" />
-                            </fieldset>
-                            </form>
+                        </c:if>
+                        <c:if test="${payment=='false'}">
+                        <div class="alert">
+                           Sorry there is problem with your payment.Your order can not be processed.
+                           <a href="ProductServlet?action=showcategories">Back to home page.</a>                            
                         </div>
-                                        
-                	</div>
-                </section>
+                        </c:if>
                 <aside id="sidebar" class="positionright three columns omega">
                     <ul>
                          <li class="widget-container">
@@ -110,4 +86,5 @@
             </div>
         </div>
         <!-- END MAIN CONTENT -->
- <%@include file="footer.jsp" %>  
+  
+<%@include file="footer.jsp" %>  

@@ -1,15 +1,15 @@
 <%-- 
-    Document   : account
-    Created on : Oct 14, 2012, 4:24:12 PM
+    Document   : cart
+    Created on : Oct 18, 2012, 5:50:20 PM
     Author     : Utkarsh
 --%>
 
 <%@include file="header.jsp" %>
-  <!-- BEFORE CONTENT -->
+ <!-- BEFORE CONTENT -->
         <div id="outerbeforecontent">
         	<div class="container">
                 <section id="beforecontent" class="twelve columns">
-                    <h1 class="pagetitle">My Account</h1>
+                    <h1 class="pagetitle">Cart</h1>
                     <div class="clear"></div>
                 </section>
             </div>
@@ -20,9 +20,9 @@
         <div id="outermain">
         	<div class="container">
 			<section id="maincontent" class="twelve columns">
-				
-                <div id="cart">
-                <form action="CartServlet" method="post" >
+            
+				<div id="cart">
+                <form action="CartServlet" method="post" />
                 <table>
                 	<thead>
                         <tr>                            
@@ -35,8 +35,7 @@
                     <tfoot>
                         <tr>
                             <td class="rounded-foot" colspan="3">
-                                <input type="hidden" value="checkout" name="action"/>  
-                                <input type="hidden" name="userid" value="${user.userId}" />                              <a href="ProductServlet?action=showcategories" class="checkout-button button alt">Add More Items</a><br>                   
+                                <input type="hidden" value="checkout" name="action"/>                                <a href="ProductServlet?action=showcategories" class="checkout-button button alt">Add More Items</a><br>                   
                                 
                                 
                             </td>
@@ -75,39 +74,7 @@
                     </tbody>
                   </table> 
                 </div>
-                <br>
-
-                <h3>User Info</h3>	
-                <p>The following Information will be used on the checkout page by default.</p>
-                
-                <div class=" one_half firstcols">
-					<header class="title2">				
-                        <h4>User Information</h4>
-                        <a href="#" class="edit">Edit</a>	
-                    </header>
-                    <div class="clear"></div>
-					<address>
-						${user.firstName} ${user.lastName}<br>
- 						${user.email}<br>
-						${user.cardNumber} ${user.cardType}<br>
-                        ${user.expDate}<br>
-                        
-                     </address>   				
-                    
-                </div>
-                <div class="one_half lastcols">
-					<header class="title2">				
-                        <h4>User Address</h4>
-                        <a href="#" class="edit">Edit</a>	
-                    </header>
-                    <div class="clear"></div>
-                    <c:forEach items="${address}" var="addr">
-					    ${addr.streetNo} ${addr.streetName}<br>
- 						${addr.city} ${addr.state} - ${addr.zip}<br>
-						${addr.phone}<br> 
-                     </c:forEach>
-                </div>
-                      
+                                         
                 <div class="clear"></div><!-- clear float --> 
             </section>
             </div>

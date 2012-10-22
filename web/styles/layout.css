@@ -212,3 +212,14 @@
 	ul.tabs li{ padding:8px 8px; font-size:12px;}
 
 }
+
+.formerror{
+  font-weight: bold;
+  color: #EA5200;
+  margin-left : 20%;
+  margin-right : 20%
+  width: auto;
+  display: inline;
+  font-size:13px;
+  text-align:center;
+}

@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="./styles/color.css" />
 	<link rel="stylesheet" href="./styles/layout.css" />
     
-	<link href='../../fonts.googleapis.com/css@family=Droid+Sans_3A400,700' rel='stylesheet' type='text/css'>
+	<!--<link href='../../fonts.googleapis.com/css@family=Droid+Sans_3A400,700' rel='stylesheet' type='text/css'>-->
 	<!--[if lt IE 9]>
 		<script src="../../html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -53,11 +53,14 @@
 	<link rel="apple-touch-icon" href="./images/apple-touch-icon.png" />
 	<link rel="apple-touch-icon" sizes="72x72" href="./images/apple-touch-icon-72x72.png" />
 	<link rel="apple-touch-icon" sizes="114x114" href="./images/apple-touch-icon-114x114.png" />
+        <script language="javascript" src="./js/jquery.js"></script>
+        <script language="javascript" src="./js/jquery-validate.js"></script>
 
 </head>
 
 
 <body>
+
 <div id="bodychild">
 	<div id="outercontainer">
     
@@ -85,13 +88,14 @@
                     	<h6>Shopping Cart</h6>
                         <p>You have no items in your shopping cart</p>
                     </div>
-					<ul id="user-nav">
-                    	<li><a href="account.html">My Account</a></li>
-                        <li><a href="login.html">My Wishlist</a></li>
-                        <li><a href="cart.html">My Cart</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
-                        <li><a href="login.html">Login</a></li>
+                    
+                   <c:if test="${user.userId!=''}">
+	           <ul id="user-nav">
+                    	<li>${user.firstName} ${user.lastName}</li>
+                        <li><a href="UserServlet?action=logout">logout</a></li>
+                        
                     </ul>
+                   </c:if>
                 </div>
 
                 <section id="navigation" class="twelve columns">

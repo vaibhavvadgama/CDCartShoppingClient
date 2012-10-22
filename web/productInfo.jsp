@@ -30,7 +30,15 @@
                             <div class="price">$${proddata.cdPrice}</div>
                             <p>Donec consectetur libero ut tortor condimentum eu egestas est viverra. Sed eget turpis dui, sed auctor nisi. Fusce suscipit risus sed tortor mattis sollicitudin. </p>
                             <div class="variations_button">
-                            	<form class="variations_form cart" method="post" action="cart.html">
+                            	<form class="variations_form cart" method="post" action="CartServlet">
+                                    <input type="hidden" name="action" value="additem" />
+                                    <input type="hidden" name="id" value="${proddata.cdId}" />
+                                    <input type="hidden" name="title" value="${proddata.cdTitle}" />
+                                    <input type="hidden" name="image" value="${proddata.cdImage}" />
+                                    <input type="hidden" name="price" value="${proddata.cdPrice}" />
+                                    <input type="hidden" name="cat_id" value="${proddata.categoryId}" />
+                                    <input type="hidden" name="taxper" value="${proddata.taxPer}" />
+                                    
                                   <div class="quantity buttons_added"></div>	
                                     <button class="button alt" type="submit">Add to cart</button>	
                                 </form>			

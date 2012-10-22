@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.6-1b01  svn-revision#13094. --><xs:schema xmlns:tns="http://orderprocess.ws.cdstoreserver.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://orderprocess.ws.cdstoreserver.com/">
+
+<xs:element name="confirmOrder" type="tns:confirmOrder"/>
+
+<xs:element name="confirmOrderResponse" type="tns:confirmOrderResponse"/>
+
+<xs:element name="createOrder" type="tns:createOrder"/>
+
+<xs:element name="createOrderResponse" type="tns:createOrderResponse"/>
+
+<xs:complexType name="createOrder">
+<xs:sequence>
+<xs:element name="shoppingCartInfo" type="tns:cdBean" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="shippingInfo" type="tns:addressBean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cdBean">
+<xs:sequence>
+<xs:element name="status" type="xs:string" minOccurs="0"/>
+<xs:element name="errormessage" type="xs:string" minOccurs="0"/>
+<xs:element name="categoryId" type="xs:int"/>
+<xs:element name="cdId" type="xs:int"/>
+<xs:element name="cdImage" type="xs:string" minOccurs="0"/>
+<xs:element name="cdPrice" type="xs:double"/>
+<xs:element name="cdTitle" type="xs:string" minOccurs="0"/>
+<xs:element name="createdDate" type="xs:string" minOccurs="0"/>
+<xs:element name="isActive" type="xs:boolean"/>
+<xs:element name="modifiedDate" type="xs:string" minOccurs="0"/>
+<xs:element name="publishDate" type="xs:string" minOccurs="0"/>
+<xs:element name="taxPer" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addressBean">
+<xs:sequence>
+<xs:element name="addressId" type="xs:int"/>
+<xs:element name="addressType" type="xs:string" minOccurs="0"/>
+<xs:element name="city" type="xs:string" minOccurs="0"/>
+<xs:element name="createdDate" type="xs:string" minOccurs="0"/>
+<xs:element name="isActive" type="xs:boolean"/>
+<xs:element name="modifiedDate" type="xs:string" minOccurs="0"/>
+<xs:element name="phone" type="xs:string" minOccurs="0"/>
+<xs:element name="state" type="xs:string" minOccurs="0"/>
+<xs:element name="streetName" type="xs:string" minOccurs="0"/>
+<xs:element name="streetNo" type="xs:string" minOccurs="0"/>
+<xs:element name="unitNo" type="xs:string" minOccurs="0"/>
+<xs:element name="userId" type="xs:int"/>
+<xs:element name="zip" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createOrderResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:processedOrdersBean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="processedOrdersBean">
+<xs:sequence>
+<xs:element name="status" type="xs:string" minOccurs="0"/>
+<xs:element name="errormessage" type="xs:string" minOccurs="0"/>
+<xs:element name="billingAddressId" type="xs:int"/>
+<xs:element name="createdDate" type="xs:string" minOccurs="0"/>
+<xs:element name="orderDate" type="xs:string" minOccurs="0"/>
+<xs:element name="orderId" type="xs:int"/>
+<xs:element name="orderStatus" type="xs:string" minOccurs="0"/>
+<xs:element name="shippingAddressId" type="xs:int"/>
+<xs:element name="shippingType" type="xs:string" minOccurs="0"/>
+<xs:element name="userId" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="confirmOrder">
+<xs:sequence>
+<xs:element name="purchaseOrder" type="tns:processedOrdersBean" minOccurs="0"/>
+<xs:element name="paymentInfo" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="confirmOrderResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:processedOrdersBean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

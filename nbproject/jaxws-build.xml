@@ -28,8 +28,8 @@
     </target>
     <target name="wsimport-client-ProductCatalogWS" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/ProductCatalogWS"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ProductCatalogWS" destdir="${build.generated.dir}/jax-wsCache/ProductCatalogWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ProductCatalogWS/wsdl/localhost_8084/CDStoreShoppingServer/ProductCatalogWS.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8084/CDStoreShoppingServer/ProductCatalogWS?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ProductCatalogWS/wsdl/localhost_8084/CDStoreShoppingServer/ProductCatalogWS.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ProductCatalogWS" destdir="${build.generated.dir}/jax-wsCache/ProductCatalogWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ProductCatalogWS/wsdl/localhost_8080/CDStoreShoppingServer/ProductCatalogWS.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/CDStoreShoppingServer/ProductCatalogWS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ProductCatalogWS/wsdl/localhost_8080/CDStoreShoppingServer/ProductCatalogWS.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/ProductCatalogWS"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -42,26 +42,10 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/com/cdstoreserver/ws/productcatalog"/>
         <delete dir="${build.generated.dir}/jax-wsCache/ProductCatalogWS"/>
     </target>
-    <target name="wsimport-client-AccountProcessingWS" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/AccountProcessingWS"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/AccountProcessingWS" destdir="${build.generated.dir}/jax-wsCache/AccountProcessingWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/AccountProcessingWS/wsdl/localhost_8084/CDStoreShoppingServer/AccountProcessingWS.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8084/CDStoreShoppingServer/AccountProcessingWS?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/AccountProcessingWS/wsdl/localhost_8084/CDStoreShoppingServer/AccountProcessingWS.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/AccountProcessingWS"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/AccountProcessingWS">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-AccountProcessingWS" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/com/cdstoreserver/ws/accountprocessing"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/AccountProcessingWS"/>
-    </target>
     <target name="wsimport-client-OrderProcessWS" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/OrderProcessWS"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/OrderProcessWS" destdir="${build.generated.dir}/jax-wsCache/OrderProcessWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/OrderProcessWS/wsdl/localhost_8084/CDStoreShoppingServer/OrderProcessWS.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8084/CDStoreShoppingServer/OrderProcessWS?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/OrderProcessWS/wsdl/localhost_8084/CDStoreShoppingServer/OrderProcessWS.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/OrderProcessWS" destdir="${build.generated.dir}/jax-wsCache/OrderProcessWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/OrderProcessWS/wsdl/localhost_8080/CDStoreShoppingServer/OrderProcessWS.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/CDStoreShoppingServer/OrderProcessWS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/OrderProcessWS/wsdl/localhost_8080/CDStoreShoppingServer/OrderProcessWS.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/OrderProcessWS"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
@@ -74,5 +58,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/com/cdstoreserver/ws/orderprocess"/>
         <delete dir="${build.generated.dir}/jax-wsCache/OrderProcessWS"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-ProductCatalogWS, wsimport-client-AccountProcessingWS, wsimport-client-OrderProcessWS"/>
+    <target name="wsimport-client-AccountProcessingWS" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/AccountProcessingWS"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/AccountProcessingWS" destdir="${build.generated.dir}/jax-wsCache/AccountProcessingWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/AccountProcessingWS/wsdl/localhost_8080/CDStoreShoppingServer/AccountProcessingWS.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/CDStoreShoppingServer/AccountProcessingWS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/AccountProcessingWS/wsdl/localhost_8080/CDStoreShoppingServer/AccountProcessingWS.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/AccountProcessingWS"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/AccountProcessingWS">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-AccountProcessingWS" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/cdstoreserver/ws/accountprocessing"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/AccountProcessingWS"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-ProductCatalogWS, wsimport-client-OrderProcessWS, wsimport-client-AccountProcessingWS"/>
 </project>
