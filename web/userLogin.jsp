@@ -38,7 +38,7 @@
                             <label>E-mail Address</label><br />
                             <input type="text" name="email" id="email"/><br />
                             <label>Password</label><br />
-                            <input type="password" class="text-input" name="pass" id="pass"/><br />
+                            <input type="password" class="text-input" name="pass" id="pass"/><br /><br />
                             <input type="submit" class="button" value="log in" />
                             </fieldset>
                             </form>

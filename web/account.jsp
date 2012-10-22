@@ -89,8 +89,7 @@
 					<address>
 						${user.firstName} ${user.lastName}<br>
  						${user.email}<br>
-						${user.cardNumber} ${user.cardType}<br>
-                        ${user.expDate}<br>
+						
                         
                      </address>   				
                     
